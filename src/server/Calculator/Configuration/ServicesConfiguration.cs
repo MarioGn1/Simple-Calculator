@@ -1,4 +1,6 @@
 ﻿using Calculator.Endpoints.Calculate;
+using Calculator.Services;
+using Calculator.Services.Contracts;
 using FastEndpoints;
 using FastEndpoints.Swagger;
 using FluentValidation;
@@ -6,7 +8,7 @@ using FluentValidation.AspNetCore;
 
 namespace Calculator.Configuration;
 
-public static class ServiceCollectionExtensions
+public static class ServicesConfiguration
 {
     public static IServiceCollection ConfigureServices(this IServiceCollection services)
     {
@@ -24,6 +26,9 @@ public static class ServiceCollectionExtensions
         services
             .AddFluentValidationAutoValidation()
             .AddValidatorsFromAssemblyContaining<CalculateRequestValidator>();
+
+        services
+            .AddTransient<ICalculatorService, CalculatorService>();
 
         return services;
     }

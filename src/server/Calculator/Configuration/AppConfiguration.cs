@@ -3,7 +3,7 @@ using FastEndpoints;
 
 namespace Calculator.Configuration;
 
-public static class AppBuilderExtensions
+public static class AppConfiguration
 {
     public static WebApplication ConfigureApp(this WebApplication app)
     {
