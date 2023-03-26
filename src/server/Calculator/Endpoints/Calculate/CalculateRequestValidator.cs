@@ -8,12 +8,12 @@ public class CalculateRequestValidator : Validator<CalculateRequest>
 {
     private const int _maxLength = 200;
 
-    private const string invalidExpressionTemplate = "Invalid expression: missing or wrong parentheses patern";
+    private const string invalidExpressionTemplate = "Invalid expression: missing or wrong parentheses pattern";
     private const string invalidMaxLengthTemplate = "The expressions is too long: current limit is {0} characters";
-    private const string invalidSimbolsTemplate = "Invalid expression simbol(s) found";
+    private const string invalidSymbolsTemplate = "Invalid expression symbol(s) found";
 
-    private const string validSimbolsPatern = @"^[\d,+,\-,*,\/,(,),\s]*$";
-    private readonly Regex validSimbols = new(validSimbolsPatern);
+    private const string validSymbolsPattern = @"^[\d+\-*\/(),\.\s]*$";
+    private readonly Regex validSymbols = new(validSymbolsPattern);
 
     public CalculateRequestValidator()
     {
@@ -21,8 +21,8 @@ public class CalculateRequestValidator : Validator<CalculateRequest>
             .NotEmpty()
             .MustAsync(ValidateExpression)
             .WithMessage(invalidExpressionTemplate)
-            .Matches(validSimbols)
-            .WithMessage(invalidSimbolsTemplate);
+            .Matches(validSymbols)
+            .WithMessage(invalidSymbolsTemplate);
 
         RuleFor(x => x.Expression.Length)
             .LessThan(_maxLength)
