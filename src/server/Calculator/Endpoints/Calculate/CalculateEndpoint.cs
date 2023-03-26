@@ -12,6 +12,8 @@ public class CalculateEndpoint : Endpoint<CalculateRequest, double>
     public CalculateEndpoint(ICalculatorService calculatorService)
         => _calculatorService = calculatorService;
 
+    public static string GetRoute() => RouteUrl;
+
     public override void Configure()
     {
         Post(RouteUrl);
