@@ -13,7 +13,7 @@ public class CalculatorService : ICalculatorService
     private const string _secondPriorityOps = "+-";
 
     private static readonly Regex whiteSpaces = new(@"\s+");
-    private static readonly Regex parenthesesExpression = new(@"[(]{1}[+\-]?\d+([\.,]{1}\d+)?[*\/+\-]{1}\d+([\.,]{1}\d+)?([*\/+\-]{1}\d+([\.,]{1}\d+)?)*[)]{1}");
+    private static readonly Regex parenthesesExpression = new(@"[(]{1}[+\-]?\d+([\.,]{1}\d+)?([+\-]{1}|[*\/]{1}[\-]?)\d+([\.,]{1}\d+)?(([+\-]{1}|[*\/]{1}[\-]?)\d+([\.,]{1}\d+)?)*[)]{1}");
     private static readonly Regex pureMathExpression = new(@"^[+\-]?\d+([\.,]{1}\d+)?([*\/+\-]{1}[+\-]?\d+([\.,]{1}\d+)?)*$");
     private static readonly Regex multiplyDevide = new(@"[\-]?\d+([\.,]{1}\d+)?([*\/]{1}[\-]?\d+([\.,]{1}\d+)?){1}");
     private static readonly Regex addSubtractDevide = new(@"[\-]?\d+([\.,]{1}\d+)?([+\-]{1}\d+([\.,]{1}\d+)?){1}");
@@ -92,6 +92,8 @@ public class CalculatorService : ICalculatorService
             await SimpleCalculation(firstMatchOperation, priorityOperators, result);
 
             expression = expression.Replace(firstMatchOperation, result.Data.ToString());
+
+            expression = await result.Apply(expression, result.Data.ToString());
 
             await CalculatePureExpression(expression, result);
         }
