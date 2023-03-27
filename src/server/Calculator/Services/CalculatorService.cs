@@ -14,8 +14,8 @@ public class CalculatorService : ICalculatorService
 
     private static readonly Regex whiteSpaces = new(@"\s+");
     private static readonly Regex parenthesesExpression = new(@"[(]{1}[+\-]?\d+([\.,]{1}\d+)?[*\/+\-]{1}\d+([\.,]{1}\d+)?([*\/+\-]{1}\d+([\.,]{1}\d+)?)*[)]{1}");
-    private static readonly Regex pureMathExpression = new(@"^[+\-]?\d+([\.,]{1}\d+)?([*\/+\-]{1}\d+([\.,]{1}\d+)?)*$");
-    private static readonly Regex multiplyDevide = new(@"\d+([\.,]{1}\d+)?([*\/]{1}[\-]?\d+([\.,]{1}\d+)?){1}");
+    private static readonly Regex pureMathExpression = new(@"^[+\-]?\d+([\.,]{1}\d+)?([*\/+\-]{1}[+\-]?\d+([\.,]{1}\d+)?)*$");
+    private static readonly Regex multiplyDevide = new(@"[\-]?\d+([\.,]{1}\d+)?([*\/]{1}[\-]?\d+([\.,]{1}\d+)?){1}");
     private static readonly Regex addSubtractDevide = new(@"[\-]?\d+([\.,]{1}\d+)?([+\-]{1}\d+([\.,]{1}\d+)?){1}");
 
     public async Task<ServiceResult<double>> Calculate(string expression)
