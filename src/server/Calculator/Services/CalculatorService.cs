@@ -45,8 +45,13 @@ public class CalculatorService : ICalculatorService
                 if (!result.Success) return;
 
                 expression = await result.Apply(expression, curSubExpression!);
+
+                if (parenthesesExpression.Matches(expression).Count > 0)
+                    await ExecuteCalculation(expression, result);
             }
         }
+
+        if (parenthesesExpression.Matches(expression).Count > 0) return;
 
         var mathematicalMatches = pureMathExpression.Matches(expression);
 

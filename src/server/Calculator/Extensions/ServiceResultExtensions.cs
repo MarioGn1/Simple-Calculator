@@ -20,7 +20,7 @@ public static class ServiceResultExtensions
 
         if (previousMathOperator.Equals('-') && resultSign.Equals('-'))
             resultExpression = expression.Replace(previousMathOperator + subExpression, "+" + resultData);
-        else if (previousMathOperator.Equals('-') || resultSign.Equals('-'))
+        else if (previousMathOperator.Equals('-') && resultSign.Equals('+') || previousMathOperator.Equals('+') && resultSign.Equals('-'))
             resultExpression = expression.Replace(previousMathOperator + subExpression, "-" + resultData);
         else
             resultExpression = expression.Replace(subExpression, resultData.ToString());
