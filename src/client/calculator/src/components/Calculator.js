@@ -20,11 +20,11 @@ const Edit = () => {
 
             return;
         }
-
+        
         let errorData = await response.json()
-        setResult((prevState) => ({ ...prevState, data: false }));
         errorData = errorData.errors.Expression.join()
 
+        setResult((prevState) => ({ ...prevState, data: false }));
         setErrors(prevState => ({ ...prevState, description: errorData }))
     }
 
