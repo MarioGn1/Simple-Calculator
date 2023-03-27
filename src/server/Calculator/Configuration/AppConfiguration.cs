@@ -7,6 +7,11 @@ public static class AppConfiguration
 {
     public static WebApplication ConfigureApp(this WebApplication app)
     {
+        app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+
         app.UseHttpsRedirection();
         app.UseRouting();
 

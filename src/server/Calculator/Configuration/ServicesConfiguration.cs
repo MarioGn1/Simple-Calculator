@@ -16,6 +16,7 @@ public static class ServicesConfiguration
             .AddHealthChecks();
 
         services
+            .AddCors()
             .AddFastEndpoints()
             .AddSwaggerDoc(settings =>
             {
