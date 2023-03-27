@@ -1,0 +1,39 @@
+nav.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-self: center;
+    letter-spacing: 0.05rem;
+    background: #234465;
+    padding: 0.8rem 1rem;
+    color: white;
+}
+
+#site-header>nav>section.navbar-dashboard>div {
+    list-style: none;
+    text-decoration: none;
+    align-self: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: white;
+}
+
+nav.navbar div {
+    display: block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-weight: bold;
+    background: cadetblue;
+    color: rgb(255, 255, 255);
+}
+
+.dashboard nav {
+    background: transparent;
+}
+
+.navbar-dashboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+}

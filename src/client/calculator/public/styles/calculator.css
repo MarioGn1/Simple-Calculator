@@ -1,0 +1,50 @@
+form {
+    max-width: 30rem;
+}
+
+.calculate form {
+    margin: 5rem auto;
+}
+
+form,
+fieldset,
+form label,
+form input,
+form mark {
+    display: block;
+    width: 100%;
+    border: none;
+    padding: 0.4rem;
+}
+
+fieldset {
+    border: 1px solid #666;
+    background: #F9F9F9;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 1rem 0.1rem rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+    padding: 1em 2em 2em 2em;
+    position: relative;
+}
+
+form label {
+    font-weight: bold;
+}
+
+.field .input,
+.output {
+    display: flex;
+    position: relative;
+    align-items: center;
+    border: 1px solid;
+}
+
+.field .input input:focus {
+    border-color: #090;
+}
+
+form mark {
+    background-color: white;
+}
